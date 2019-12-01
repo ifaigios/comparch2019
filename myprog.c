@@ -1,12 +1,13 @@
 #include <stdio.h>
-
+#include <math.h>
 
 int main() {
-	int i=0;
-	for(i=0;i<=124;i++) {
-		printf("The number is: %d\n",i);
+float result = 0;
 
-	}
-	return 0;
+// run 100.000 sqrt calculations
+for (int i = 0; i < 100000; ++i) {
+    result += sqrt(i);
+}
 
+return 0;
 }
