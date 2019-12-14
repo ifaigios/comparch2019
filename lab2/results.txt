@@ -1,0 +1,75 @@
+Benchmarks                                                      CPI  `      L1D_miss	L1I_miss	L2_miss
+
+specbzip2    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-64	2.693026	0.025767	0.000430	0.985403        # defaults
+specbzip2    l1i-64kB-2    l1d-128kB-2   l2-2MB-8    lines-64	2.693003	0.025768	0.000402	0.985818        
+specbzip2    l1i-128kB-2   l1d-64kB-2    l2-2MB-8    lines-64	2.693026	0.025769	0.000398	0.985736
+specbzip2    l1i-32kB-1    l1d-64kB-2    l2-2MB-8    lines-64	2.696756	0.025763	0.001001	0.977697
+specbzip2    l1i-32kB-4    l1d-64kB-2    l2-2MB-8    lines-64	2.692942	0.025770	0.000404	0.985687
+specbzip2    l1i-32kB-2    l1d-64kB-1    l2-2MB-8    lines-64	2.703844	0.026086	0.000431	0.967871
+specbzip2    l1i-32kB-2    l1d-64kB-4    l2-2MB-8    lines-64	2.693026	0.025766	0.000430	0.985476
+specbzip2    l1i-32kB-2    l1d-64kB-2    l2-2MB-4    lines-64	2.700700	0.025759	0.000430	0.988481
+specbzip2    l1i-32kB-2    l1d-64kB-2    l2-2MB-16   lines-64	2.696118	0.025769	0.000430	0.983210
+specbzip2    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-32	3.295653	0.035662	0.000490	0.989964
+specbzip2    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-128	2.495538	0.015914	0.000379	0.982895
+specbzip2    l1i-32kB-2    l1d-64kB-2    l2-4MB-8    lines-64	2.650510	0.025775	0.000430	0.970814
+specbzip2    l1i-32kB-2    l1d-64kB-2    l2-1MB-8    lines-64	2.715658	0.025762	0.000430	0.991890
+
+
+specmcf    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-64	    1.559140	0.008122	0.026703	0.185459        # defaults
+specmcf    l1i-64kB-2    l1d-128kB-2   l2-2MB-8    lines-64	    1.395074	0.008114	0.000236	0.965229
+specmcf    l1i-128kB-2   l1d-64kB-2    l2-2MB-8    lines-64	    1.395074	0.008122	0.000231	0.964175
+specmcf    l1i-32kB-1    l1d-64kB-2    l2-2MB-8    lines-64	    1.532662	0.008121	0.021335	0.220556
+specmcf    l1i-32kB-4    l1d-64kB-2    l2-2MB-8    lines-64	    1.395074	0.008122	0.000238	0.963070
+specmcf    l1i-32kB-2    l1d-64kB-1    l2-2MB-8    lines-64	    1.563812	0.008854	0.026703	0.181251
+specmcf    l1i-32kB-2    l1d-64kB-4    l2-2MB-8    lines-64	    1.559140	0.008120	0.026703	0.185473
+specmcf    l1i-32kB-2    l1d-64kB-2    l2-2MB-4    lines-64	    1.559140	0.008122	0.026703	0.185459
+specmcf    l1i-32kB-2    l1d-64kB-2    l2-2MB-16   lines-64	    1.559140	0.008122	0.026703	0.185459
+specmcf    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-32	    1.686701	0.012562	0.018863	0.357949
+specmcf    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-128	1.440534	0.004099	0.026988	0.110283
+specmcf    l1i-32kB-2    l1d-64kB-2    l2-4MB-8    lines-64     1.559140	0.008122	0.026703	0.185459
+specmcf    l1i-32kB-2    l1d-64kB-2    l2-1MB-8    lines-64	    1.559763	0.008122	0.026703	0.185459
+
+
+spechmmer    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-64	1.370812	0.004708	0.001882	0.284711        # defaults
+spechmmer    l1i-64kB-2    l1d-128kB-2   l2-2MB-8    lines-64	1.363182	0.002567	0.001530	0.500223
+spechmmer    l1i-128kB-2   l1d-64kB-2    l2-2MB-8    lines-64	1.368255	0.004709	0.000905	0.319573
+spechmmer    l1i-32kB-1    l1d-64kB-2    l2-2MB-8    lines-64	1.398009	0.004707	0.008762	0.161473
+spechmmer    l1i-32kB-4    l1d-64kB-2    l2-2MB-8    lines-64	1.368947	0.004708	0.001090	0.312144
+spechmmer    l1i-32kB-2    l1d-64kB-1    l2-2MB-8    lines-64	1.390079	0.005802	0.001886	0.222554
+spechmmer    l1i-32kB-2    l1d-64kB-4    l2-2MB-8    lines-64	1.370072	0.004692	0.001878	0.287373
+spechmmer    l1i-32kB-2    l1d-64kB-2    l2-2MB-4    lines-64	1.370812	0.004708	0.001882	0.284711
+spechmmer    l1i-32kB-2    l1d-64kB-2    l2-2MB-16   lines-64	1.370812	0.004708	0.001882	0.284711
+spechmmer    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-32	1.440750	0.008333	0.001534	0.306768
+spechmmer    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-128	1.339944	0.002613	0.002120	0.241136
+spechmmer    l1i-32kB-2    l1d-64kB-2    l2-4MB-8    lines-64	1.370812	0.004708	0.001882	0.284711
+spechmmer    l1i-32kB-2    l1d-64kB-2    l2-1MB-8    lines-64	1.370812	0.004708	0.001882	0.284711
+
+
+specsjeng    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-64	6.118919	0.084726	0.000256	0.999551        # defaults
+specsjeng    l1i-64kB-2    l1d-128kB-2   l2-2MB-8    lines-64	6.119707	0.084721	0.000248	0.999699
+specsjeng    l1i-128kB-2   l1d-64kB-2    l2-2MB-8    lines-64	6.118706	0.084726	0.000246	0.999627
+specsjeng    l1i-32kB-1    l1d-64kB-2    l2-2MB-8    lines-64	6.119707	0.084726	0.000266	0.999478
+specsjeng    l1i-32kB-4    l1d-64kB-2    l2-2MB-8    lines-64	6.119656	0.084726	0.000247	0.999620
+specsjeng    l1i-32kB-2    l1d-64kB-1    l2-2MB-8    lines-64	6.123724	0.085160	0.000256	0.989503
+specsjeng    l1i-32kB-2    l1d-64kB-4    l2-2MB-8    lines-64	6.118919	0.084726	0.000256	0.999554
+specsjeng    l1i-32kB-2    l1d-64kB-2    l2-2MB-4    lines-64	6.119125	0.084726	0.000256	0.999551
+specsjeng    l1i-32kB-2    l1d-64kB-2    l2-2MB-16   lines-64	6.119373	0.084726	0.000256	0.999551
+specsjeng    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-32	10.141716	0.169415	0.000280	0.999753
+specsjeng    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-128	4.232155	0.042390	0.000191	0.999179
+specsjeng    l1i-32kB-2    l1d-64kB-2    l2-4MB-8    lines-64	6.069087	0.084726	0.000256	0.999551
+specsjeng    l1i-32kB-2    l1d-64kB-2    l2-1MB-8    lines-64	6.144186	0.084726	0.000256	0.999551
+
+
+speclibm    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-64	    3.437203	0.048995	0.000905	0.999302        # defaults
+speclibm    l1i-64kB-2    l1d-128kB-2   l2-2MB-8    lines-64	    3.437203	0.048995	0.000866	0.999528
+speclibm    l1i-128kB-2   l1d-64kB-2    l2-2MB-8    lines-64	    3.437203	0.048995	0.000840	0.999661
+speclibm    l1i-32kB-1    l1d-64kB-2    l2-2MB-8    lines-64	    3.435203	0.048995	0.001055	0.998498
+speclibm    l1i-32kB-4    l1d-64kB-2    l2-2MB-8    lines-64	    3.437203	0.048995	0.000866	0.999514
+speclibm    l1i-32kB-2    l1d-64kB-1    l2-2MB-8    lines-64	    3.448839	0.049639	0.000905	0.981086
+speclibm    l1i-32kB-2    l1d-64kB-4    l2-2MB-8    lines-64	    3.437203	0.048995	0.000905	0.999302
+speclibm    l1i-32kB-2    l1d-64kB-2    l2-2MB-4    lines-64	    3.437203	0.048995	0.000905	0.999302
+speclibm    l1i-32kB-2    l1d-64kB-2    l2-2MB-16   lines-64	    3.430736	0.048995	0.000905	0.999302
+speclibm    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-32	    5.610405	0.097964	0.000730	0.999720
+speclibm    l1i-32kB-2    l1d-64kB-2    l2-2MB-8    lines-128	    2.482760	0.024509	0.001080	0.998090
+speclibm    l1i-32kB-2    l1d-64kB-2    l2-4MB-8    lines-64	    3.396434	0.048995	0.000905	0.999302
+speclibm    l1i-32kB-2    l1d-64kB-2    l2-1MB-8    lines-64	    3.458724	0.048995	0.000905	0.999302
