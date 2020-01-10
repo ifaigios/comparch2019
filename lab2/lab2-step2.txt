@@ -1,0 +1,60 @@
+Εργαστήριο 2 - Βήμα 2
+
+Στα benchmarks που έτρεξαν χρησιμοποιήθηκαν οι παρακάτω τιμές, σαν πιο ρεαλιστικές και εντός του περιεχομένου του μαθήματος:
+
+L1I_SIZE: 32, 64, 128 kB (default: 32kB)
+L1I_SIZE 1, 2, 4, 8, 16 (default: 2)
+L1D_SIZE: 32, 64, 128 kB (default: 64kB)
+L1D_ASSOC: 1, 2, 4, 8, 16 (default: 2)
+L2_SIZE: 1, 2, 4 MB (default: 2MB)
+L2_ASSOC: 1, 2, 4, 8, 16 (default: 8)
+CACHELINE_SIZE: 32, 64, 128, 256, 512, 1024, 2048 B (default: 64B)
+
+Στις περιπτώσεις που δύο ή περισσότερες τιμές για κάποια παράμετρο οδηγούν σε ίδιο CPI (κατά 4 δεκαδικά ψηφία), επιλέγουμε πάντα τη μικρότερη τιμή, έτσι ώστε η αρχιτεκτονική μας να έχει το μικρότερο κόστος.
+Για τις παραμέτρους που είχαν την μεγαλύτερη επίδραση στο CPI υπάρχουν σχετικά γραφήματα στον φάκελο lab2/graphs_step2.
+Αναλυτικά αποτελέσματα για κάθε benchmark υπάρχουν στο spreadsheet lab2/results.ods
+
+specbzip2:
+
+Παρατηρούμε ότι την μεγαλύτερη επίδραση στο CPI έχουν οι παράμετροι L1D_SIZE, L1D_ASSOC και L2_SIZE
+Πετυχαίνουμε το ελάχιστο CPI χρησιμοποιώντας τις παρακάτω παραμέτρους:
+L1I_SIZE=32kB L1I_ASSOC=2 L1D_SIZE=128kB L1D_ASSOC=16 L2_SIZE=4MB L2_ASSOC=4 CACHELINE_SIZE=128
+
+Τελικό CPI = = 1.560331
+Speedup σε σχέση με τα defaults = 1.077893
+
+specmcf:
+
+Παρατηρούμε ότι την μεγαλύτερη επίδραση στο CPI έχουν οι παράμετροι L1I_SIZE, L1I_ASSOC και L1D_SIZE
+Πετυχαίνουμε το ελάχιστο CPI χρησιμοποιώντας τις παρακάτω παραμέτρους:
+L1I_SIZE=128kB L1I_ASSOC=8 L1D_SIZE=128kB L1D_ASSOC=4 L2_SIZE=4MB L2_ASSOC=4 CACHELINE_SIZE=256
+
+Τελικό CPI = = 1.161820
+Speedup σε σχέση με τα defaults = 1.151455
+
+specsjeng:
+
+Παρατηρούμε ότι την μεγαλύτερη επίδραση στο CPI έχει η παράμετρος CACHELINE_SIZE
+Πετυχαίνουμε το ελάχιστο CPI χρησιμοποιώντας τις παρακάτω παραμέτρους:
+L1I_SIZE=32kB L1I_ASSOC=4 L1D_SIZE=64kB L1D_ASSOC=2 L2_SIZE=4MB L2_ASSOC=2 CACHELINE_SIZE=2048
+
+Τελικό CPI = = 3.087033
+Speedup σε σχέση με τα defaults = 3.342605
+
+spechmmer:
+
+Παρατηρούμε ότι την μεγαλύτερη επίδραση στο CPI έχουν οι παράμετροι CACHELINE_SIZE και L1D_SIZE
+Πετυχαίνουμε το ελάχιστο CPI χρησιμοποιώντας τις παρακάτω παραμέτρους:
+L1I_SIZE=128kB L1I_ASSOC=4 L1D_SIZE=128kB L1D_ASSOC=4 L2_SIZE=1MB L2_ASSOC=1 CACHELINE_SIZE=256
+
+Τελικό CPI = = 1.261708
+Speedup σε σχέση με τα defaults = 1.010047
+
+speclibm:
+
+Παρατηρούμε ότι την μεγαλύτερη επίδραση στο CPI έχει η παράμετρος CACHELINE_SIZE
+Πετυχαίνουμε το ελάχιστο CPI χρησιμοποιώντας τις παρακάτω παραμέτρους:
+L1I_SIZE=32kB L1I_ASSOC=1 L1D_SIZE=64kB L1D_ASSOC=2 L2_SIZE=4MB L2_ASSOC=1 CACHELINE_SIZE=2048
+
+Τελικό CPI = = 1.402052
+Speedup σε σχέση με τα defaults = 2.467180
