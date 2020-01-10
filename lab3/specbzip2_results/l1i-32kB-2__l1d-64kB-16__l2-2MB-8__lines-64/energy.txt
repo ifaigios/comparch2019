@@ -1,0 +1,4 @@
+Reading simulation time from: specbzip2_results/l1i-32kB-2__l1d-64kB-16__l2-2MB-8__lines-64/mcpat.out
+Reading simulation time from: specbzip2_results/l1i-32kB-2__l1d-64kB-16__l2-2MB-8__lines-64/stats.txt
+leakage: 0.964394 W, dynamic: 0.718517 W and runtime: 0.082718 sec
+energy is 139.207032 mJ
