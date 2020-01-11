@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 import sys
 import re
 import os
@@ -8,7 +8,6 @@ import math
 import StringIO
 import subprocess as subp
 from optparse import OptionParser
-
 
 mcpat_bin = "mcpat"
 
@@ -45,7 +44,6 @@ class parse_node:
         return 'k: ' + str(this.key) + ' v: ' + str(this.value)
 
 class parser:
-
     def dprint(this,astr):
         if this.debug:
             print this.name,
@@ -83,7 +81,6 @@ class parser:
                 this.dprint('new parse_node: ' + str(n) )
 
             else:
-                
                 while ( indent <= branch.indent):
                     this.dprint('poping branch: i: '+str(indent) +\
                                     ' r: '+ str(branch.indent))
@@ -95,7 +92,6 @@ class parser:
                 branch.append(n)
                 trunk.append(n)
                 
-        
     def get_tree(this):
         return this.root.get_tree(0)
 
@@ -104,40 +100,16 @@ class parser:
         assert(value != '')
         return value
 
-#runs McPAT and gives you EDA
-def main():
-    global opts
-    usage = "usage: %prog [options] <mcpat output file> <gem5 stats file>"
-    parser = OptionParser(usage=usage)
-    parser.add_option("-q", "--quiet", 
-        action="store_false", dest="verbose", default=True,
-        help="don't print status messages to stdout")
-    
-    (opts, args) = parser.parse_args()
-    if len(args) != 2:
-        parser.print_help()
-        sys.exit(1)
-   
-    eda = getEDA(args[0], args[1])
-    print "%f" % eda
-    
-
-def getEDA(mcpatoutputFile, statsFile):
-    leakage, dynamic, area = readMcPAT(mcpatoutputFile)
-    runtime = getTimefromStats(statsFile)
-    energy = (leakage + dynamic)*runtime
-    eda = energy * runtime * area
-#    print "energy: %f W, delay: %f sec, area: %f mm^2" % (energy, runtime, area)
-    return eda
-
 def readMcPAT(mcpatoutputFile):
     p = parser(mcpatoutputFile)
-
+    
+    peak = p.getValue(['Processor:', 'Peak Power'])
+    peak = re.sub(' W','', peak) 
+    
     corearea = p.getValue(['Core:', 'Area'])
     coresub = p.getValue(['Core:', 'Subthreshold Leakage'])
     coregate = p.getValue(['Core:', 'Gate Leakage'])
     coredynamic = p.getValue(['Core:', 'Runtime Dynamic'])
-
     corearea = re.sub(" mm\^2",'', corearea) 
     coresub = re.sub(' W','', coresub) 
     coregate = re.sub(' W','', coregate) 
@@ -158,26 +130,54 @@ def readMcPAT(mcpatoutputFile):
     leakage = coreleakage + l2leakage
     dynamic = float(coredynamic) + float(l2dynamic)
     area = float(corearea) + float(l2area)
+    peak = float(peak)
 
-    return (leakage, dynamic, area)
-    
+    return (leakage, dynamic, area, peak)
 
 def getTimefromStats(statsFile):
     F = open(statsFile)
     ignores = re.compile(r'^---|^$')
-    statLine = re.compile(r'([a-zA-Z0-9_\.:+-]+)\s+([-+]?[0-9]+\.[0-9]+|[0-9]+|nan)')
-    retVal = None
+    statLine = re.compile(r'([a-zA-Z0-9_\.:+-]+)\s+([-+]?[0-9]+\.[0-9]+|[0-9]+|nan+|inf)')
+
     for line in F:
         #ignore empty lines and lines starting with "---"  
         if not ignores.match(line):
             statKind = statLine.match(line).group(1)
             statValue = statLine.match(line).group(2)
             if statKind == 'sim_seconds':
-                retVal = float(statValue)
-		break	#no need to parse the whole file once the requested value has been found
+                runtime = float(statValue)
+            if statKind == 'system.cpu.cpi':
+                cpi = float(statValue)
+            if statKind == 'system.cpu.icache.overall_miss_rate::total':
+                l1i_miss = float(statValue)                
+            if statKind == 'system.cpu.dcache.overall_miss_rate::total':
+                l1d_miss = float(statValue)
+            if statKind == 'system.l2.overall_miss_rate::total':
+                l2_miss = float(statValue)                
+	#	break	# no need to parse the whole file once the requested value has been found
     F.close()
-    return retVal
+    return (runtime, cpi, l1i_miss, l1d_miss, l2_miss)
 
+def main():
+    global opts
+    usage = "usage: %prog [options] <mcpat output file> <gem5 stats file>"
+    parser = OptionParser(usage=usage)
+    parser.add_option("-q", "--quiet", 
+        action="store_false", dest="verbose", default=True,
+        help="don't print status messages to stdout")
+    
+    (opts, args) = parser.parse_args()
+    if len(args) != 2:
+        parser.print_help()
+        sys.exit(1)
+        
+    runtime, cpi, l1i_miss, l1d_miss, l2_miss = getTimefromStats(args[1])   
+    leakage, dynamic, area, peak = readMcPAT(args[0])
+    energy = (leakage + dynamic) * runtime
+    eda = energy * runtime * area
+
+    print "%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f" % (cpi, l1i_miss, l1d_miss, l2_miss, peak, energy, runtime, area, eda)
 
 if __name__ == '__main__':
     main()
+
