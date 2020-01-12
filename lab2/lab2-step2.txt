@@ -38,8 +38,8 @@ specsjeng:
 Πετυχαίνουμε το ελάχιστο CPI χρησιμοποιώντας τις παρακάτω παραμέτρους:
 L1I_SIZE=32kB L1I_ASSOC=4 L1D_SIZE=64kB L1D_ASSOC=2 L2_SIZE=4MB L2_ASSOC=2 CACHELINE_SIZE=256
 
-Τελικό CPI = = 3.087033
-Speedup σε σχέση με τα defaults = 3.342605
+Τελικό CPI = = 5.195887
+Speedup σε σχέση με τα defaults = 1.985942
 
 spechmmer:
 
@@ -56,5 +56,6 @@ speclibm:
 Πετυχαίνουμε το ελάχιστο CPI χρησιμοποιώντας τις παρακάτω παραμέτρους:
 L1I_SIZE=32kB L1I_ASSOC=1 L1D_SIZE=64kB L1D_ASSOC=2 L2_SIZE=4MB L2_ASSOC=1 CACHELINE_SIZE=256
 
-Τελικό CPI = = 1.402052
-Speedup σε σχέση με τα defaults = 2.467180
+Τελικό CPI = = 1.887164
+Speedup σε σχέση με τα defaults = 1.83297
+
