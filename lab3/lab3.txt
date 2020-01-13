@@ -24,8 +24,9 @@ H δυναμική ισχύς είναι ανάλογη της συνολική�
 1) Για τον υπολογισμό των ζητηθέντων υλοποιήθηκε το custom python program print_eda.py καθώς και το bash script eda.sh
 Η πληροφορία για το Delay αντλήθηκε από το αρχείο stats.txt (sim_seconds)
 Το Energy υπολογίστηκε πολλαπλασιάζοντας το συνολικό power draw (leakage + dynamic) με τον χρόνο εκτέλεσης (delay)
+Αναλυτικά αποτελέσματα βρίσκονται στο spreadsheet lab3-results.ods
 
-2) Αναλυτικά αποτελέσματα και γραφήματα βρίσκονται στο spreadsheet lab3-results.ods , καθώς και στον φάκελο lab3/graphs
+2) Αναλυτικά γραφήματα βρίσκονται στο spreadsheet lab3-graphs.xlsx , καθώς και στον φάκελο lab3/graphs
 
 specbzip2:
 
